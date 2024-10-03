@@ -1,0 +1,84 @@
+name: Tests Backend & Frontend
+
+on:
+  push:
+    branches: [ "main" ] # Trigger the workflow on pushes to the main branch
+  pull_request:
+    branches: [ "main" ] # Trigger the workflow on pull requests targeting the main branch
+
+jobs:
+  # Backend Tests
+  backend-tests:
+    runs-on: ubuntu-latest # Use the latest Ubuntu environment for the job
+
+    defaults:
+      run:
+        working-directory: back # Set the default working directory to 'back' for all steps in this job
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up JDK 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4.4.0
+        with:
+          java-version: 17
+          distribution: "temurin"
+          cache: "maven"
+
+      # Step 3: Install project dependencies
+      - name: Install dependencies
+        run: mvn clean install
+
+      # Step 4: Build and execute tests
+      - name: Execute tests
+        run: mvn clean test # Runs the test script
+
+      # Step 5: Create the Jacoco coverage report
+      - name: Create coverage report
+        run: mvn jacoco:report
+
+      # Step 6: Upload code coverage report as an artifact
+      - name: Backend code coverage report artifact
+        uses: actions/upload-artifact@v4
+        if: success() || failure() # Upload the artifact regardless of the job's success or failure
+        with:
+          name: Jacoco code coverage # Name of the artifact
+          path: ./back/target/site/jacoco # Path to the coverage report directory
+
+  # Frontend Tests
+  frontend-tests:
+    runs-on: ubuntu-latest # Use the latest Ubuntu environment for the job
+
+    defaults:
+      run:
+        working-directory: front # Set the default working directory to 'front' for all steps in this job
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16' # Specify Node.js version 16
+
+      # Step 3: Install project dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Build and execute tests
+      - name: Build and execute tests
+        run: npm run test:prod # Runs the test script
+
+      # Step 5: Upload code coverage report as an artifact
+      - name: Frontend code coverage report artifact
+        uses: actions/upload-artifact@v4
+        if: success() || failure() # Upload the artifact regardless of the job's success or failure
+        with:
+          name: Jest code coverage # Name of the artifact
+          path: ./front/coverage/bobapp # Path to the coverage report directory
