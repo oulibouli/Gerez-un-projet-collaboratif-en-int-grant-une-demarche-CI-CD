@@ -1,0 +1,6 @@
+projectKey=oulibouli_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+serverUrl=http://localhost:9000
+serverVersion=10.6.0.92116
+dashboardUrl=http://localhost:9000/dashboard?id=oulibouli_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+ceTaskId=a00b5a9e-f733-494c-ba6f-f787239af60a
+ceTaskUrl=http://localhost:9000/api/ce/task?id=a00b5a9e-f733-494c-ba6f-f787239af60a
