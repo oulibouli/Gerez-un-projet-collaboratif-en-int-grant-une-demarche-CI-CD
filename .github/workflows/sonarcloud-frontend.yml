@@ -40,8 +40,8 @@ jobs:
             # mandatory
             -Dsonar.projectKey=oulibouli_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
             -Dsonar.organization=oulibouli6456
-            -Dsonar.sources=front/src
-            -Dsonar.tests=front/src
-            -Dsonar.typescript.lcov.reportPaths=front/coverage/bobapp/lcov.info
+            -Dsonar.sources=src
+            -Dsonar.tests=src
+            -Dsonar.typescript.lcov.reportPaths=coverage/bobapp/lcov.info
           # When you need the analysis to take place in a directory other than the one from which it was launched, default is .
          #projectBaseDir: .
