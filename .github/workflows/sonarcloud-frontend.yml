@@ -29,7 +29,6 @@ jobs:
 
       - name: Build and execute tests
         run: |
-          npm run build --if-present
           npm run test:prod
 
       - name: Analyze with SonarCloud
