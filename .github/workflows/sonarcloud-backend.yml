@@ -49,3 +49,8 @@ jobs:
         with:
           name: Jacoco code coverage # Name of the artifact
           path: ./back/target/site/jacoco # Path to the coverage report directory
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=oulibouli6456_bobapp-backend
