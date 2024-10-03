@@ -1,4 +1,4 @@
-name: Test backend
+name: Sonarcloud Test backend
 
 on:
   push:
