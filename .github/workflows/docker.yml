@@ -33,4 +33,4 @@ jobs:
         with:
           context: ./back
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/bobapp-backend:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/bobapp-backend:latest
