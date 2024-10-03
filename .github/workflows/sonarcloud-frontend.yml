@@ -34,8 +34,7 @@ jobs:
 
       # Step 4: Build and execute tests
       - name: Build and execute tests
-        run: |
-          npm run test:prod # Runs the test script (can include build and test commands)
+        run: npm run test:prod # Runs the test script
 
       # Step 5: Upload code coverage report as an artifact
       - name: Frontend code coverage report artifact
