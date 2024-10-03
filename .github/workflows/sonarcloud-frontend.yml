@@ -12,9 +12,7 @@ permissions:
 jobs:
   sonarcloud-frontend:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: front
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -34,6 +32,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
         with:
+          projectBaseDir: front
           # Additional arguments for the SonarScanner CLI
           args:
             # Unique keys of your project and organization. You can find them in SonarCloud > Information (bottom-left menu)
@@ -43,5 +42,3 @@ jobs:
             -Dsonar.sources=src
             -Dsonar.tests=src
             -Dsonar.typescript.lcov.reportPaths=coverage/bobapp/lcov.info
-          # When you need the analysis to take place in a directory other than the one from which it was launched, default is .
-         #projectBaseDir: .
