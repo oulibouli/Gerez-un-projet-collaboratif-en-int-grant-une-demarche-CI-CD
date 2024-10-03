@@ -10,7 +10,7 @@ permissions:
   pull-requests: read # Allows SonarCloud to add comments or checks to the pull requests
 
 jobs:
-  sonarcloud-frontend:
+  sonarcloud-backend:
     runs-on: ubuntu-latest # Use the latest Ubuntu environment for the job
 
     defaults:
