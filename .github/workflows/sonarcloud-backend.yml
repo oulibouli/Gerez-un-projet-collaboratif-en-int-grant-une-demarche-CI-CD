@@ -43,7 +43,7 @@ jobs:
         run: mvn jacoco:report
 
       # Step 6: Upload code coverage report as an artifact
-      - name: Frontend code coverage report artifact
+      - name: Backend code coverage report artifact
         uses: actions/upload-artifact@v4
         if: success() || failure() # Upload the artifact regardless of the job's success or failure
         with:
