@@ -1,8 +1,10 @@
 name: Docker build and push
 
 on:
-  push:
-    branches: ["main"]
+  workflow_run:
+    workflows: ["SonarCloud Analysis"]
+    types:
+      - completed  # Could be used with "success" to be accurate
 
 jobs:
   backend:
