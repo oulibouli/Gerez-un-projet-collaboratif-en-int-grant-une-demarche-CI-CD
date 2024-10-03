@@ -31,6 +31,13 @@ jobs:
         run: |
           npm run test:prod
 
+      - name: Frontend code coverage report artifact
+        uses: actions/upload-artifact@v4
+        if: success() || failure()
+        with:
+          name: Jest code coverage
+          path: ./front/coverage/bobapp
+
       - name: Analyze with SonarCloud
         # You can pin the exact commit or the version.
         # uses: SonarSource/sonarcloud-github-action@v2.2.0
