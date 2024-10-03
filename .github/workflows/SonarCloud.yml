@@ -1,11 +1,10 @@
 name: SonarCloud Analysis
 
 on:
-  #push:
-    #branches: [ "main" ] # Trigger the workflow on pushes to the main branch
-  #pull_request:
-    #branches: [ "main" ] # Trigger the workflow on pull requests targeting the main branch
-  workflow_dispatch:
+  push:
+    branches: [ "main" ] # Trigger the workflow on pushes to the main branch
+  pull_request:
+    branches: [ "main" ] # Trigger the workflow on pull requests targeting the main branch
 
 permissions:
   pull-requests: read # Allows SonarCloud to add comments or checks to the pull requests
